@@ -4,19 +4,28 @@
     <meta charset='utf-8'>
     <!-- viewport for mobile browser -->
     <meta content='width=device-width, minimum-scale=1, maximum-scale=1' name='viewport'>
-    <title>Fb app</title> <!-- change to project title here -->
+    <title>Feeds</title> <!-- change to project title here -->
     <link href='vendors/jquery.mobile-1.3.2.css' rel='stylesheet'>
     <link href='app.css' rel='stylesheet'>
   </head>
   <body>
     <div data-role='page' id='root'>
       <div data-role='header' class='bigFont'>
-        <h1>Fb app</h1>
+        <h1>Feeds</h1>
         <a class='ui-btn-left' data-role='button' href='#welcome'>說明</a>
         <a class='ui-btn-right' data-role='button' href='#setting'>設定</a>
       </div>
       <div data-role='content' class='bigFont pageCenter'>
         <!-- content here -->
+        <div>
+          <!-- 
+          <a data-role='button' id='login'><p id='loginButtonM'>Fb login</p>
+          </a>-->
+          <button id='login'><p id='loginButtonM'>Fb login</p>
+          </button>
+        </div>
+        <div id='userInfo'>
+        </div>
       </div>
     </div>
     <div data-role='page' id='setting'>
@@ -42,7 +51,7 @@
     <script src='vendors/jquery-2.0.3.js'></script>
     <script src='vendors/jquery.mobile-1.3.2.js'></script>
     <script src='vendors/swipe.js'></script>
-    <script src='vendors/fbinit.js'></script>
     <script src='app.js'></script>
+    <script src='vendors/fbinit.js'></script>
   </body>
 </html>

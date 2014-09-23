@@ -1,11 +1,15 @@
 // FB sdk init
-(function(){
+(function($){
 	window.fbAsyncInit = function() {
         FB.init({
-			appId      : 'your-appId',
+			appId      : 'your-fb-id',
 			xfbml      : true,
 			version    : 'v2.1'
         });
+        fbReady = true;
+        $(document).ready(function(){
+        	window.app.controller.init();
+		});
     };
 
 	(function(d, s, id){
@@ -15,4 +19,4 @@
 		js.src = "https://connect.facebook.net/en_US/sdk.js";
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
-})();
+}).call(this, jQuery);
