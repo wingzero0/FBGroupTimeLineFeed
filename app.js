@@ -13,13 +13,23 @@
 	app.view.showPersonal = function(info){
 		$("#userInfo").html(info);
 	}
-	app.view.addPost = function(time, message, picture){
+	// app.view.dropPost = function(postId){
+	// 	var post = $("#" + postId);
+	// 	if (post.length){
+	// 		console.log(post);
+	// 		console.log("reseting " + postId);
+	// 		post.remove();
+	// 	}
+		
+	// }
+	app.view.addPost = function(time, message, postId){
+		// app.view.dropPost();
 		var localTime = new Date(time);
-		$("#userInfo").append("<p>" + localTime + "</p>" + "<p>" + message + "</p>" + "<div id=" + picture + "></div>");
+		$("#userInfo").append("<div id='" + postId + "'><p>" + localTime + "</p>" + "<p>" + message + "</p>" + "</div>");
 	}
-	app.view.addPhoto = function(id, picture){
+	app.view.addPhoto = function(id, pictureSrc){
 		console.log(id);
-		$("#" + id).append("<img src=" + picture + "></img>");
+		$("#" + id).append("<img class='postImage' src=" + pictureSrc + "></img>");
 	}
 }).call(this, jQuery);
 
@@ -32,20 +42,27 @@
 			if (response.status === 'connected') {
 				console.log('Logged in.');
 				app.controller.loadGroupInfo();
-				$("#loginButtonM").html("refresh");
-				$("#login").click(function(){
+				$("#login").addClass("hidden");
+				$("#loginDiv").addClass("hidden");
+				$("#refreshB").removeClass("hidden");
+				// $("#loginButtonM").html("refresh");
+				$("#refreshB").click(function(){
 					$("#userInfo").html("");
 					app.controller.loadGroupInfo();
 				});
-			}
-			else {
+			} else {
+				// $("#refreshB").addClass("hidden");
 				$("#login").click(function(){
 					FB.login(function(response){
+						$("#login").addClass("hidden");
+						$("#loginDiv").addClass("hidden");
+						$("#refreshB").removeClass("hidden");
 						app.controller.loadGroupInfo();
-						$("#loginButtonM").html("refresh");
+						// $("#loginButtonM").html("refresh");
 
-						$("#login").click(function(){
+						$("#refreshB").click(function(){
 							$("#userInfo").html("");
+							app.controller.loadGroupInfo();
 						});
 					}, {scope: 'user_groups,email'});
 				});
@@ -69,6 +86,7 @@
 					/* handle the result */
 					response.data.sort(compare);
 					$(response.data).each(function (index){
+						// app.view.resetPost(this.id);
 						app.view.addPost(this.created_time, this.message, this.id);
 						app.controller.loadPostInfo(this.id);
 					});
@@ -87,7 +105,7 @@
 					if (response.attachments.data[0].subattachments){
 						$(response.attachments.data[0].subattachments.data).each(function(){
 							app.view.addPhoto(postId, this.media.image.src);
-							console.log("subattachments" + this.media.image.src);
+							console.log("subattachments " + this.media.image.src);
 						});
 					}else {
 						app.view.addPhoto(postId, response.attachments.data[0].media.image.src);

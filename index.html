@@ -10,22 +10,20 @@
   </head>
   <body>
     <div data-role='page' id='root'>
-      <div data-role='header' class='bigFont'>
-        <h1>Feeds</h1>
+      <div data-role='header'>
+        <h1 style="white-space:normal;">澳門道路情報 Timeline</h1>
+        <!--
         <a class='ui-btn-left' data-role='button' href='#welcome'>說明</a>
         <a class='ui-btn-right' data-role='button' href='#setting'>設定</a>
+        -->
+        <a id='refreshB' class='ui-btn-right hidden' data-role='button' data-icon='refresh' data-iconpos="notext" style='transform:scale(1.5);'>Refresh</a>
       </div>
-      <div data-role='content' class='bigFont pageCenter'>
+      <div data-role='content' class='bigFont'>
         <!-- content here -->
-        <div>
-          <!-- 
-          <a data-role='button' id='login'><p id='loginButtonM'>Fb login</p>
-          </a>-->
-          <button id='login'><p id='loginButtonM'>Fb login</p>
-          </button>
+        <div id='loginDiv' class='pageCenter'>
+          <a data-role='button' id='login'><p id='loginButtonM'>Fb login</p></a>
         </div>
-        <div id='userInfo'>
-        </div>
+        <div id='userInfo'></div>
       </div>
     </div>
     <div data-role='page' id='setting'>

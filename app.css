@@ -1,3 +1,7 @@
+.postImage{
+  max-width:100%;
+}
+
 .ui-icon-phone {
   background-image: url(images/call.png);
   background-repeat: no-repeat;
@@ -9,16 +13,16 @@
   border-radius: 5px;
 }
 
-.bigFont .ui-title{
-  font-size: 1.75em;
-  margin: .3em 30% .3em;
-}
+/*.ui-title {
+  white-space:normal;
+}*/
 .bigFont .ui-btn-text, p.bigFont{
   font-size: 1.5em;
 }
 
 .hidden{
 	display:none;
+  visibility: hidden;
 }
 
 .blockCenter{
@@ -31,7 +35,7 @@
 }
 
 .pageCenter{
-  /* margin-top: 100px; */
+  /*margin-top: 100px;*/
   padding-top: 50px;
 }
 
